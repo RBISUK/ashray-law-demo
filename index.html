@@ -1,93 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ambrish Ashray Law — Demo (TDS Campaign)</title>
-  <meta name="description" content="Demo site for Ambrish Ashray Law with TDS campaign. Built by Ryan Roberts — Behavioural & Intelligence Services." />
+  <meta name="description" content="Demo site for Ambrish Ashray Law focused on TDS (tenancy deposit) checks and claims. Built by Ryan Roberts — Behavioural & Intelligence Services." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://example.com/" />
+  <meta property="og:title" content="Ambrish Ashray Law — Demo (TDS Campaign)" />
+  <meta property="og:description" content="Clear advice. Firm advocacy. Outcomes that matter." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="color-scheme" content="light dark" />
   <style>
-    body { font-family: system-ui, sans-serif; margin:0; line-height:1.6; }
-    header, footer { background:#fafafa; border-bottom:1px solid #eee; padding:1rem; position:sticky; top:0; }
-    nav a { margin-right:1rem; text-decoration:none; }
-    .hero { text-align:center; padding:2rem; }
-    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
-    .card { border:1px solid #ddd; border-radius:.5rem; padding:1rem; background:#fff; }
-    .btn { display:inline-block; margin-top:.5rem; padding:.5rem .75rem; border:1px solid #111; border-radius:.4rem; text-decoration:none; }
-    .btn.primary { background:#111; color:#fff; }
-    form { max-width:500px; margin-top:1rem; }
-    label { display:block; margin-top:.5rem; }
-    input,textarea,select { width:100%; padding:.5rem; margin-top:.25rem; border:1px solid #ccc; border-radius:.4rem; }
+    :root{
+      --bg:#ffffff; --text:#111; --muted:#666; --surface:#fafafa; --border:#eaeaea; --card:#fff; --accent:#111; --accent-contrast:#fff;
+      --radius:.6rem; --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+      --max:1100px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0b0c; --text:#f2f2f2; --muted:#b6b6b6; --surface:#111214; --border:#1e1f22; --card:#141518; --accent:#e5e5e5; --accent-contrast:#000; }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+    a{color:inherit}
+    img{max-width:100%; height:auto; display:block}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .skip{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{position:fixed; left:1rem; top:1rem; width:auto; height:auto; padding:.5rem .75rem; background:var(--accent); color:var(--accent-contrast); border-radius:.4rem; z-index:9999}
+    header{position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--border);}
+    header .bar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 0;}
+    nav a{display:inline-block; padding:.4rem .6rem; border-radius:.4rem; text-decoration:none}
+    nav a[aria-current="page"]{background:var(--border);}
+    nav a:focus, nav a:hover{background:var(--border)}
+    .hero{padding:3rem 0 2rem 0; text-align:center}
+    .hero h1{line-height:1.1; margin:0 0 .5rem 0; font-size:clamp(1.6rem, 2.5vw + 1rem, 2.6rem)}
+    .hero p{color:var(--muted); margin:0 auto 1rem auto; max-width:48ch}
+    .btn{display:inline-block; margin:.4rem .25rem 0 0; padding:.6rem .9rem; border:1px solid var(--accent); border-radius:.5rem; text-decoration:none; box-shadow:var(--shadow)}
+    .btn.primary{background:var(--accent); color:var(--accent-contrast)}
+    .grid-3{display:grid; gap:1rem; grid-template-columns:repeat(12,minmax(0,1fr))}
+    .grid-3 > *{grid-column:span 12}
+    @media (min-width:700px){ .grid-3 > *{grid-column:span 4} }
+    .section{padding:2rem 0}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+    form{max-width:560px; margin-top:1rem}
+    label{display:block; margin-top:.75rem}
+    input, select, textarea{width:100%; padding:.6rem .7rem; margin-top:.35rem; border:1px solid var(--border); border-radius:.5rem; background:var(--bg); color:var(--text)}
+    input:focus, select:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:2px}
+    .help{font-size:.9rem; color:var(--muted)}
+    .notice{font-size:.9rem; background:var(--surface); border:1px dashed var(--border); padding:.75rem; border-radius:.5rem}
+    .success{display:none; margin-top:1rem; padding:.75rem; border-radius:.5rem; background:#10b98120; border:1px solid #10b98180}
+    .error{display:none; margin-top:1rem; padding:.75rem; border-radius:.5rem; background:#ef444420; border:1px solid #ef444480}
+    footer{margin-top:3rem; padding:1rem 0; border-top:1px solid var(--border); background:var(--surface)}
+    section{scroll-margin-top:80px}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Ambrish Ashray Law (Demo)",
+    "url": "https://example.com/",
+    "areaServed": ["GB-ENG", "GB-WLS"],
+    "legalName": "Ambrish Ashray Law (Demo)",
+    "description": "Demo site focused on TDS (tenancy deposit) checks and claims.",
+    "sameAs": []
+  }
+  </script>
 </head>
 <body>
-  <header>
-    <strong>Ambrish Ashray Law</strong> — Demo site
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#tds">TDS</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy</a>
-    </nav>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header role="banner">
+    <div class="container bar" aria-label="Top navigation">
+      <strong aria-label="Site name">Ambrish Ashray Law</strong>
+      <nav aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#tds">TDS</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
+  <main id="main" tabindex="-1">
+    <section id="home" class="hero container">
       <h1>Practical, ethical, effective.</h1>
       <p>Clear advice. Firm advocacy. Outcomes that matter.</p>
+      <p class="muted">Demo experience — submissions are stored locally for preview only.</p>
       <a class="btn primary" href="#contact">Book a consultation</a>
       <a class="btn" href="#tds">Start a TDS check</a>
     </section>
 
-    <section id="services" class="grid-3">
-      <div class="card"><h2>Housing & Disrepair</h2><p>Robust, evidence-led claims.</p></div>
-      <div class="card"><h2>Consumer & Contracts</h2><p>Unfair terms, defects, delays.</p></div>
-      <div class="card"><h2>Data & Privacy</h2><p>GDPR requests, SARs, audits.</p></div>
-    </section>
-
-    <section id="tds">
-      <h2>TDS Campaign</h2>
-      <p>If your landlord didn’t protect your deposit correctly, you may claim 1–3× deposit.</p>
+    <section id="services" class="section container">
+      <h2>Services</h2>
       <div class="grid-3">
-        <div class="card"><h3>Eligibility</h3><ul><li>AST tenancy</li><li>Deposit not protected in 30 days</li><li>England/Wales</li></ul></div>
-        <div class="card"><h3>Common Issues</h3><ul><li>Late protection</li><li>No prescribed info</li><li>Fees taken</li></ul></div>
-        <div class="card"><h3>What we do</h3><ul><li>Status check</li><li>Letter before claim</li><li>Settlement strategy</li></ul></div>
+        <div class="card">
+          <h3>Housing &amp; Disrepair</h3>
+          <p>Robust, evidence-led claims to remediate damp, mould, leaks, and unsafe living conditions.</p>
+        </div>
+        <div class="card">
+          <h3>Consumer &amp; Contracts</h3>
+          <p>Challenging unfair terms, defects, and delays—strategic negotiation to resolution.</p>
+        </div>
+        <div class="card">
+          <h3>Data &amp; Privacy</h3>
+          <p>GDPR requests, Subject Access Requests (SARs), and compliance audits with clear outcomes.</p>
+        </div>
       </div>
-      <form>
-        <label>Your name <input required></label>
-        <label>Email <input type="email" required></label>
-        <label>Address <input required></label>
-        <label>Deposit (£) <input type="number" required></label>
-        <label>Tenancy start <input type="date" required></label>
-        <button class="btn primary">Check my deposit</button>
+    </section>
+
+    <section id="tds" class="section container">
+      <h2>TDS Campaign</h2>
+      <p>If your landlord didn’t protect your tenancy deposit correctly, you may claim 1–3× the deposit amount.</p>
+      <div class="grid-3" aria-label="TDS information">
+        <div class="card">
+          <h3>Eligibility</h3>
+          <ul>
+            <li>Assured shorthold tenancy (AST)</li>
+            <li>Deposit not protected within 30 days</li>
+            <li>England or Wales</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Common Issues</h3>
+          <ul>
+            <li>Late protection</li>
+            <li>Missing prescribed information</li>
+            <li>Unlawful fees deducted</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>What we do</h3>
+          <ul>
+            <li>Deposit status check</li>
+            <li>Letter before claim</li>
+            <li>Negotiation &amp; settlement strategy</li>
+          </ul>
+        </div>
+      </div>
+
+      <form id="tds-form" aria-labelledby="tdsFormTitle" novalidate>
+        <h3 id="tdsFormTitle">Check my deposit (demo)</h3>
+        <p class="help">This demo saves your input in your browser only and shows a confirmation. Replace with a real endpoint before going live.</p>
+
+        <label>Full name
+          <input name="name" autocomplete="name" required placeholder="Jane Doe" />
+        </label>
+        <label>Email
+          <input type="email" name="email" autocomplete="email" required placeholder="jane@example.com" />
+        </label>
+        <label>Address
+          <input name="address" autocomplete="address-line1" required placeholder="Flat 2, 10 Sample Street, London" />
+        </label>
+        <label>Deposit (£)
+          <input type="number" name="deposit" inputmode="decimal" min="0" step="0.01" required placeholder="1200" />
+        </label>
+        <label>Tenancy start
+          <input type="date" name="tenancy_start" required />
+        </label>
+        <button class="btn primary" type="submit">Check my deposit</button>
+        <div id="tds-success" class="success" role="status" aria-live="polite">Thanks — your TDS check has been received (demo). A confirmation preview is below.</div>
+        <div id="tds-error" class="error" role="alert">Please complete all required fields correctly.</div>
       </form>
+
+      <div id="tds-preview" class="card" style="display:none; margin-top:1rem;" aria-live="polite">
+        <h4>Submission preview</h4>
+        <pre id="tds-json" style="white-space:pre-wrap; margin:0"></pre>
+      </div>
     </section>
 
-    <section id="team" class="grid-3">
-      <div class="card"><h3>Ambrish Ashray</h3><p>Principal</p></div>
-      <div class="card"><h3>Case Manager</h3><p>Intake & evidence</p></div>
-      <div class="card"><h3>Operations</h3><p>Compliance & QA</p></div>
+    <section id="team" class="section container">
+      <h2>Team</h2>
+      <div class="grid-3">
+        <div class="card"><h3>Ambrish Ashray</h3><p>Principal Solicitor</p></div>
+        <div class="card"><h3>Case Manager</h3><p>Intake &amp; evidence handling</p></div>
+        <div class="card"><h3>Operations</h3><p>Compliance &amp; quality assurance</p></div>
+      </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="section container">
       <h2>Contact</h2>
-      <form>
-        <label>Name <input required></label>
-        <label>Email <input type="email" required></label>
-        <label>Message <textarea required></textarea></label>
-        <button class="btn primary">Send</button>
+      <form id="contact-form" aria-labelledby="contactFormTitle" novalidate>
+        <h3 id="contactFormTitle">Send a message (demo)</h3>
+        <label>Name
+          <input name="c_name" autocomplete="name" required placeholder="Jane Doe" />
+        </label>
+        <label>Email
+          <input type="email" name="c_email" autocomplete="email" required placeholder="jane@example.com" />
+        </label>
+        <label>Message
+          <textarea name="c_message" rows="5" required placeholder="How can we help?"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send</button>
+        <div id="contact-success" class="success" role="status" aria-live="polite">Message sent (demo). We’ve logged it locally below.</div>
+        <div id="contact-error" class="error" role="alert">Please complete all fields.</div>
       </form>
+
+      <div id="contact-preview" class="card" style="display:none; margin-top:1rem;" aria-live="polite">
+        <h4>Message preview</h4>
+        <pre id="contact-json" style="white-space:pre-wrap; margin:0"></pre>
+      </div>
     </section>
 
-    <section id="privacy">
+    <section id="privacy" class="section container">
       <h2>Privacy (Demo)</h2>
-      <p>This demo does not collect data beyond your submission. Replace with full policy before live.</p>
+      <p class="notice">This demo does not transmit data to a server. Submissions are stored in your browser only for preview. Replace this section with a full policy and connect forms to your chosen processor before going live.</p>
     </section>
   </main>
 
-  <footer>
-    © 2025 Ambrish Ashray Law — Demo site built by <strong>Ryan Roberts — Behavioural & Intelligence Services</strong>.
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2025 Ambrish Ashray Law — Demo site built by <strong>Ryan Roberts — Behavioural &amp; Intelligence Services</strong>.</p>
+      <p class="muted">Demo content for illustration. For production use, add regulatory/firm details, complaints procedure, and accessibility statement.</p>
+    </div>
   </footer>
+
+  <noscript><div class="container notice" style="margin-top:1rem;">JavaScript is disabled. Forms will not show live previews in this demo.</div></noscript>
+
+  <script>
+    // Smooth scrolling + active nav
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+      links.forEach(a=>{
+        a.addEventListener('click', e=>{
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({behavior: prefersReduced ? 'auto' : 'smooth', block:'start'});
+            target.focus?.();
+          }
+        });
+      });
+
+      const io = new IntersectionObserver((entries)=>{
+        const visible = entries.filter(en=>en.isIntersecting).sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+        if(!visible) return;
+        const id = "#" + visible.target.id;
+        links.forEach(l => l.removeAttribute('aria-current'));
+        const current = links.find(l => l.getAttribute('href') === id);
+        if(current) current.setAttribute('aria-current','page');
+      }, {rootMargin:"-60% 0px -35% 0px", threshold:[0,0.25,0.5,0.75,1]});
+      sections.forEach(s=> io.observe(s));
+    })();
+
+    function formToJSON(form){
+      const data = {};
+      new FormData(form).forEach((v,k)=>{ data[k] = v; });
+      return data;
+    }
+
+    function handleDemoForm(formId, successId, errorId, previewId, preId, storageKey){
+      const form = document.getElementById(formId);
+      const ok = document.getElementById(successId);
+      const err = document.getElementById(errorId);
+      const preview = document.getElementById(previewId);
+      const pre = document.getElementById(preId);
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        err.style.display = 'none';
+        ok.style.display = 'none';
+        preview.style.display = 'none';
+
+        if(!form.checkValidity()){
+          err.style.display = 'block';
+          return;
+        }
+        const payload = formToJSON(form);
+        payload._submitted_at = new Date().toISOString();
+
+        try{
+          const list = JSON.parse(localStorage.getItem(storageKey) || '[]');
+          list.push(payload);
+          localStorage.setItem(storageKey, JSON.stringify(list));
+        }catch(_){} // non-fatal
+
+        pre.textContent = JSON.stringify(payload, null, 2);
+        ok.style.display = 'block';
+        preview.style.display = 'block';
+        form.reset();
+      });
+    }
+
+    handleDemoForm('tds-form','tds-success','tds-error','tds-preview','tds-json','demo_tds_submissions');
+    handleDemoForm('contact-form','contact-success','contact-error','contact-preview','contact-json','demo_contact_messages');
+  </script>
 </body>
 </html>
