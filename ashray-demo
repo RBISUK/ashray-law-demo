@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ambrish Ashray Law — Demo (TDS Campaign)</title>
+  <meta name="description" content="Single-file demo site for Ambrish Ashray Law with TDS campaign section. Built by Ryan Roberts — Behavioural & Intelligence Services." />
+  <style>
+    body { font-family: system-ui, sans-serif; margin:0; line-height:1.6; }
+    header, footer { background:#fafafa; border-bottom:1px solid #eee; padding:1rem; position:sticky; top:0; }
+    nav a { margin-right:1rem; text-decoration:none; }
+    .hero { text-align:center; padding:2rem; }
+    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+    .card { border:1px solid #ddd; border-radius:.5rem; padding:1rem; background:#fff; }
+    .btn { display:inline-block; margin-top:.5rem; padding:.5rem .75rem; border:1px solid #111; border-radius:.4rem; text-decoration:none; }
+    .btn.primary { background:#111; color:#fff; }
+    form { max-width:500px; margin-top:1rem; }
+    label { display:block; margin-top:.5rem; }
+    input,textarea,select { width:100%; padding:.5rem; margin-top:.25rem; border:1px solid #ccc; border-radius:.4rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Ambrish Ashray Law</strong> — Demo site
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#tds">TDS</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <h1>Practical, ethical, effective.</h1>
+      <p>Clear advice. Firm advocacy. Outcomes that matter.</p>
+      <a class="btn primary" href="#contact">Book a consultation</a>
+      <a class="btn" href="#tds">Start a TDS check</a>
+    </section>
+
+    <section id="services" class="grid-3">
+      <div class="card"><h2>Housing & Disrepair</h2><p>Robust, evidence-led claims.</p></div>
+      <div class="card"><h2>Consumer & Contracts</h2><p>Unfair terms, defects, delays.</p></div>
+      <div class="card"><h2>Data & Privacy</h2><p>GDPR requests, SARs, audits.</p></div>
+    </section>
+
+    <section id="tds">
+      <h2>TDS Campaign</h2>
+      <p>If your landlord didn’t protect your deposit correctly, you may claim 1–3× deposit.</p>
+      <div class="grid-3">
+        <div class="card"><h3>Eligibility</h3><ul><li>AST tenancy</li><li>Deposit not protected in 30 days</li><li>England/Wales</li></ul></div>
+        <div class="card"><h3>Common Issues</h3><ul><li>Late protection</li><li>No prescribed info</li><li>Fees taken</li></ul></div>
+        <div class="card"><h3>What we do</h3><ul><li>Status check</li><li>Letter before claim</li><li>Settlement strategy</li></ul></div>
+      </div>
+      <form>
+        <label>Your name <input required></label>
+        <label>Email <input type="email" required></label>
+        <label>Address <input required></label>
+        <label>Deposit (£) <input type="number" required></label>
+        <label>Tenancy start <input type="date" required></label>
+        <button class="btn primary">Check my deposit</button>
+      </form>
+    </section>
+
+    <section id="team" class="grid-3">
+      <div class="card"><h3>Ambrish Ashray</h3><p>Principal</p></div>
+      <div class="card"><h3>Case Manager</h3><p>Intake & evidence</p></div>
+      <div class="card"><h3>Operations</h3><p>Compliance & QA</p></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <label>Name <input required></label>
+        <label>Email <input type="email" required></label>
+        <label>Message <textarea required></textarea></label>
+        <button class="btn primary">Send</button>
+      </form>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy (Demo)</h2>
+      <p>This demo does not collect data beyond your submission. Replace with full policy before live.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Ambrish Ashray Law — Demo site built by <strong>Ryan Roberts — Behavioural & Intelligence Services</strong>.
+  </footer>
+</body>
+</html>
